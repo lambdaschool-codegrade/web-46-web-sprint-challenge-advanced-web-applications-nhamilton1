@@ -32,7 +32,6 @@ test("Executes handleDelete and toggleEdit property when the 'x' icon is clicked
     const mockHandleDelete = jest.fn()
     const mockToggleEdit = jest.fn()
 
-
     render(<Color color={testColor} deleteColor={mockHandleDelete} toggleEdit={mockToggleEdit} />)
 
     const selectDelete = screen.queryByTestId('delete')
@@ -44,7 +43,6 @@ test("Executes handleDelete and toggleEdit property when the 'x' icon is clicked
 });
 
 test("Executes setEditColor and toggleEdit property when color div is clicked", () => {
-
     const mockSetEditColor = jest.fn()
     const mockToggleEdit = jest.fn()
 

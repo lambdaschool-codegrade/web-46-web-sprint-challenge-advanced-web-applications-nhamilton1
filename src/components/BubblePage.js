@@ -30,7 +30,7 @@ const BubblePage = () => {
     axiosWithAuth()
       .put(`/colors/${editColor.id}`, editColor)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         // console.log('log of editcolor',editColor)
         // console.log('map of colors',colors.map(color => console.log(color.id)))
         //if editColor.id === color.id then save edit color, else keep color
