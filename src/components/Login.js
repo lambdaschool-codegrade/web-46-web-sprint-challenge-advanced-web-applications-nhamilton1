@@ -6,12 +6,12 @@ const initialFormValues = {
   password: ''
 }
 
-const Login = () => {
+const Login = (props) => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
   const [formValues, setFormValues] = useState(initialFormValues)
 
-  const error = "";
+  const [error, setError] = useState('')
   //replace with error state
 
   const handleChange = (e) => {
@@ -22,11 +22,12 @@ const Login = () => {
     e.preventDefault()
     axios.post('http://localhost:5000/api/login', formValues)
       .then(res => {
-        console.log(res)
         localStorage.setItem('token', res.data.payload)
+        props.history.push('/BubblePage')
+        setError('')
       })
       .catch(err => {
-        console.log(err)
+        setError(` ${err}: Please give a correct username and/or password`)
       })
   }
 
