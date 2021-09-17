@@ -4,10 +4,33 @@ import MutationObserver from 'mutationobserver-shim';
 import { render, screen} from "@testing-library/react";
 import BubblePage from './BubblePage';
 
-test("Renders without errors", ()=> {
-    
-});
+import fetchColorServices from '../services/fetchColorService'
+jest.mock('../services/fetchColorService')
+
+// test("Renders without errors", ()=> {
+//     render(<BubblePage />)
+// });
 
 test("Renders appropriate number of colors passed in through mock", async ()=> {
     //Keep in mind that our service is called on mount for this component.
+    fetchColorServices.mockResolvedValueOnce({
+        data:[
+            {color: 'blue', code: { hex: '#0000FF'}, id: 1},
+            {color: 'orange', code: { hex: '#FFA500'}, id: 2},
+            {color: 'purple', code: { hex: '#A020F0'}, id: 3},
+            {color: 'aqua', code: { hex: '#00FFFF'}, id: 4},
+            {color: 'pink', code: { hex: '#FFC0CB'}, id: 5},
+            {color: 'beige', code: { hex: '#F5F5DC'}, id: 6},
+        ]
+    })
+
+    //ARRANGE: 
+    render(<BubblePage/>)
+
+    //ACT:
+    const colors = await screen.findAllByTestId('color')
+
+    //ASSERT
+    expect(colors).toHaveLength(6)
+
 });
