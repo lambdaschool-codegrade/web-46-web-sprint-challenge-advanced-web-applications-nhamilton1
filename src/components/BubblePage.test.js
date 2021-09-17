@@ -12,7 +12,6 @@ test("Renders without errors", ()=> {
 });
 
 test("Renders appropriate number of colors passed in through mock", async ()=> {
-    //Keep in mind that our service is called on mount for this component.
     fetchColorServices.mockResolvedValueOnce({
         data:[
             {color: 'blue', code: { hex: '#0000FF'}, id: 1},

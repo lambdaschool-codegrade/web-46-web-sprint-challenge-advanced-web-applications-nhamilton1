@@ -21,8 +21,6 @@ function App() {
       })
   }
 
-  // console.log(window.location.href ='/' ) breaks it 
-  
  
   return (
     <Router>
